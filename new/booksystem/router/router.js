@@ -1,4 +1,5 @@
-var Book = require("../models/Book.js")
+var Book = require("../models/Book.js");
+
 //显是首页
 exports.showIndex = function(req,res,next){
   Book.liechusuoyoushu(function (err,result) {
@@ -21,3 +22,14 @@ exports.doadd = function(req,res,next){
       res.send("保存成功")
     })
 }
+exports.showEdit = function (req,res,next) {
+  Book.findbookByName(req.query.name,function (err,result) {
+    // console.log(result);
+      res.render("edit",
+        result[0]
+      );
+  })
+}
+// exports.doedit = function (req,res,next) {
+//     Book.update()
+// }

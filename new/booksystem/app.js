@@ -6,4 +6,6 @@ app.set("view engine","ejs");
 app.get("/",router.showIndex);
 app.get("/addbook",router.addbook);
 app.get("/doadd",router.doadd);
+app.get("/edit",router.showEdit);
+app.get("/doedit",router.doedit);
 app.listen(3000);
