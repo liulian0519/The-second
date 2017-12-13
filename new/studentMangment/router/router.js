@@ -1,6 +1,9 @@
 var mongoose = require("mongoose");
 var Student = require("../models/Student.js")
-
+var Kecheng = require("../models/Kecheng.js");
+// Kecheng.create({ "kid":100, "name":"高数"});
+// Kecheng.create({ "kid":101, "name":"离散"});
+// Kecheng.create({ "kid":102, "name":"概率论"});
 //首页
 exports.showIndex = function (req,res,next) {
     Student.find({},function (err,result) {
