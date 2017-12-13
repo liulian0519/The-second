@@ -29,8 +29,20 @@ exports.edit = function (req,res,next) {
     //修改
     var sid =parseInt(req.params["sid"]);
     Student.findOne({"sid":sid},function (err,result) {
+        if(err || !result){
+
+            res.send("错误");
+            return;
+        }
         res.render("edit",{
             "student":result
         });
     });
+}
+//执行修改
+exports.doEdit = function (req,res,next) {
+   var sid = req.params["sid"];
+   Student.update({"sid":sid},req.query,function () {
+       res.send("修改成功");
+   })
 }

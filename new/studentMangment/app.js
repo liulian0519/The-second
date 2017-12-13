@@ -9,4 +9,5 @@ app.get("/",router.showIndex);
 app.get("/add",router.showAdd);
 app.get("/doAdd",router.doAdd);
 app.get("/edit/:sid",router.edit);
+app.get("/doEdit/:sid",router.doEdit);
 app.listen(3000);

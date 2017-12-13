@@ -9,9 +9,9 @@
 </head>
 <body>
 <h1>修改学生信息</h1>
-<form action="/doAdd" method="get">
+<form action="/doEdit/<%=student.sid%>" method="get">
     <p>
-        学号<input type="text" name="sid" value="<%=student.sid%>" />
+        学号<input type="text" name="sid" disabled value="<%=student.sid%>" />
     </p>
     <p>
         姓名<input type="text" name="name" value="<%=student.name%>" />
