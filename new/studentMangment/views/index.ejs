@@ -17,17 +17,20 @@
     </style>
 </head>
 <body>
+<a href="/add" style="text-decoration: none" target="_blank">【添加学生】 </a>
     <table>
         <tr>
             <td>姓名</td>
             <td>年龄</td>
             <td>性别</td>
+            <td>操作</td>
         </tr>
         <%for(var i =0 ;i<students.length;i++){%>
             <tr>
                 <td><%=students[i].name%></td>
                 <td><%=students[i].age%></td>
                 <td><%=students[i].sex%></td>
+                <td><a href="/edit/<%=students[i].sid%>" style="text-decoration: none">修改</a></td>
             </tr>
         <%}%>
     </table>

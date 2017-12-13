@@ -19,8 +19,18 @@ exports.showAdd = function (req,res,next) {
 //执行插入
 exports.doAdd = function (req,res,next) {
     //存储数据
-Student.create(req.query,function () {
-    // console.log("插入成功");
-    res.send("插入成功")
-});
+    Student.create(req.query,function () {
+        // console.log("插入成功");
+        res.send("插入成功")
+    });
+}
+//修改
+exports.edit = function (req,res,next) {
+    //修改
+    var sid =parseInt(req.params["sid"]);
+    Student.findOne({"sid":sid},function (err,result) {
+        res.render("edit",{
+            "student":result
+        });
+    });
 }
