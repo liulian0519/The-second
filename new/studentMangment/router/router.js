@@ -46,3 +46,10 @@ exports.doEdit = function (req,res,next) {
        res.send("修改成功");
    })
 }
+//删除
+exports.remove = function (req,res,next) {
+    var sid = req.params["sid"];
+    Student.remove({"sid":sid},function () {
+        res.send("删除成功");
+    });
+}
