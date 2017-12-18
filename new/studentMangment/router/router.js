@@ -44,9 +44,13 @@ exports.edit = function (req,res,next) {
             res.send("错误");
             return;
         }
-        res.render("edit",{
-            "student":result
+        Kecheng.find({},function (err,result2) {
+            res.render("edit",{
+                "student":result,
+                "quanbukecheng":result2
+            });
         });
+
     });
 }
 //执行修改
