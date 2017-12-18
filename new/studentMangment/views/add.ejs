@@ -23,6 +23,14 @@
             <input type="radio" name="sex" value="男" />男
             <input type="radio" name="sex" value="女" />女
         </p>
+        <p>
+            选修课程：<br>
+            <% for( var i=0;i<quanbukecheng.length;i++){%>
+                <input type="checkbox" name="kengcheng" value="<%=quanbukecheng[i].name%>" /><%=quanbukecheng[i].name%>
+            <%}%>
+
+        </p>
+
         <input type="submit" />
     </form>
 </body>

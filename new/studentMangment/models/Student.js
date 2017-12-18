@@ -6,7 +6,8 @@ var studentSchema = new mongoose.Schema({
     "sid":Number,
     "name":String,
     "age":Number,
-    "sex":String
+    "sex":String,
+    "kengchengs":[Number]     //存放课程主键kid
 });
 studentSchema.index({"sid":1});
 //model

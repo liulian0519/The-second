@@ -3,7 +3,7 @@ var Student = require("../models/Student.js")
 var Kecheng = require("../models/Kecheng.js");
 // Kecheng.create({ "kid":100, "name":"高数"});
 // Kecheng.create({ "kid":101, "name":"离散"});
-// Kecheng.create({ "kid":102, "name":"概率论"});
+ Kecheng.create({ "kid":103, "name":"c语言"});
 //首页
 exports.showIndex = function (req,res,next) {
     Student.find({},function (err,result) {
@@ -15,9 +15,15 @@ exports.showIndex = function (req,res,next) {
 }
 
 
+
 //显示插入
 exports.showAdd = function (req,res,next) {
-    res.render("add");
+    Kecheng.find({},function (err,result) {
+        res.render("add",{
+            "quanbukecheng":result
+        });
+    });
+
 }
 //执行插入
 exports.doAdd = function (req,res,next) {
