@@ -15,6 +15,7 @@ app.use(session({
 //模板引擎
 app.set("view engine","ejs");
 var alluser = [];
+app.use(express.static("./public"));
 //首页
 app.get("/",function (req,res,next) {
     res.render("index");
@@ -34,8 +35,14 @@ app.get("/check",function (req,res,next) {
     //付给session
     req.session.yonghuming = yonghuming;
     res.redirect("/chat");
-
-
+});
+app.get("/chat",function (req,res,next) {
+    res.render("chat");
+})
+io.on("connection",function (socket) {
+    socket.on("liaotian",function (msg) {
+        console.log(msg);
+    })
 })
 
 //监听
