@@ -36,13 +36,21 @@ app.get("/check",function (req,res,next) {
     req.session.yonghuming = yonghuming;
     res.redirect("/chat");
 });
+//聊天室
 app.get("/chat",function (req,res,next) {
-    res.render("chat");
+    if(!req.session.yonghuming){
+        res.redirect("/");
+        return;
+    }
+    res.render("chat",{
+        "yonghuming":req.session.yonghuming
+    });
 })
 io.on("connection",function (socket) {
     socket.on("liaotian",function (msg) {
-        console.log(msg);
-    })
+        io.emit("liaotian",msg);
+    });
+
 })
 
 //监听

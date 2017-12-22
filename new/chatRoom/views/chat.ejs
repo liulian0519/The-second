@@ -26,10 +26,13 @@
 </head>
 <body>
 <div>
-    <h1>小小聊天室</h1>
+    <h1>
+        小小聊天室
+        欢迎<span id="yonghu"><%=yonghuming%></span>
+    </h1>
    <div>
        <ul class="liebiao">
-           <li><b></b></li>
+
        </ul>
    </div>
     <div class="caozuo">
@@ -42,8 +45,16 @@
 <script type="text/javascript">
     var socket = io();
     $("#fayan").click(function () {
-        socket.emit("liaotian",$("#neirong").val());
+        socket.emit("liaotian",{
+            "neirong" : $("#neirong").val(),
+            "ren":$("#yonghu").html()
+        });
+
+
     });
+    socket.on("liaotian",function (msg) {
+        $(".liebiao").prepend("<li><b>"+ msg.ren + "说：</b>"+ msg.neirong+"</li>");
+    })
 
 </script>
 </body>
