@@ -37,20 +37,21 @@
    </div>
     <div class="caozuo">
         <input type="text" id="neirong" />
-        <input type="button" id="fayan" value="发言" />
+        <!--<input type="button" id="fayan" value="发言" />-->
     </div>
 </div>
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
     var socket = io();
-    $("#fayan").click(function () {
-        socket.emit("liaotian",{
-            "neirong" : $("#neirong").val(),
-            "ren":$("#yonghu").html()
-        });
-
-
+    $("#neirong").keydown(function (e) {
+        if(e.keyCode==13){
+            socket.emit("liaotian",{
+                "neirong" : $("#neirong").val(),
+                "ren":$("#yonghu").html()
+            });
+            $(this).val("");
+        }
     });
     socket.on("liaotian",function (msg) {
         $(".liebiao").prepend("<li><b>"+ msg.ren + "说：</b>"+ msg.neirong+"</li>");
